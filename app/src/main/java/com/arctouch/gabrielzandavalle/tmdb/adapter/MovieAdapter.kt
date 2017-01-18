@@ -13,9 +13,9 @@ import kotlinx.android.synthetic.main.movie_item.view.movieName
  * Created by gabrielzandavalle on 1/17/17.
  */
 
-class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(movies: List<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
-  private val movies = mutableListOf<Movie>(Movie("Batman"))
+  private var movies: List<Movie> = movies
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val layoutInflater = LayoutInflater.from(parent.context)
@@ -28,7 +28,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val item = movies[position]
-    holder.movieName.text = item.name;
+    holder.movieName.text = item.title;
   }
 
   class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
