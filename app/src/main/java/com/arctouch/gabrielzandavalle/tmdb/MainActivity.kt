@@ -33,7 +33,7 @@ class MainActivity: AppCompatActivity() {
     list.enqueue(object: Callback<MovieListResponse> {
 
       override fun onResponse(call: Call<MovieListResponse>?, response: Response<MovieListResponse>?) {
-        moviesList.adapter = MovieAdapter(response?.body()?.items!!)
+        moviesList.adapter = MovieAdapter(this@MainActivity, response?.body()?.items!!)
         moviesList.layoutManager = LinearLayoutManager(this@MainActivity)
       }
 
