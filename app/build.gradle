@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion 25
@@ -41,10 +42,19 @@ dependencies {
 
   compile 'com.squareup.picasso:picasso:2.5.1'
 
+  // Dagger
   compile 'com.google.dagger:dagger:2.4'
   kapt 'com.google.dagger:dagger-compiler:2.4'
-  provided 'javax.annotation:jsr250-api:1.0'
+  provided 'org.glassfish:javax.annotation:10.0-b28'
 }
+
+kapt {
+  // Required for dagger
+  // This will enable the compiler to generate stub classes required for
+  // interoperability between Java and Kotlin.
+  generateStubs = true
+}
+
 repositories {
   mavenCentral()
 }

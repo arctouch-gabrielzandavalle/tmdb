@@ -4,26 +4,26 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.arctouch.gabrielzandavalle.tmdb.adapter.MovieAdapter
+import com.arctouch.gabrielzandavalle.tmdb.di.MainActivityModule
 import com.arctouch.gabrielzandavalle.tmdb.model.MovieListResponse
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import kotlinx.android.synthetic.main.activity_main.moviesList
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 class MainActivity: AppCompatActivity() {
+
+  @Inject
+  lateinit var retrofit: Retrofit
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    val baseUrl = "https://api.themoviedb.org/3/";
-    val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build();
+    initConfiguration();
 
     val tmdbApi = retrofit.create(TmdbApiInterface::class.java)
 
@@ -41,5 +41,12 @@ class MainActivity: AppCompatActivity() {
         System.out.print(t?.message)
       }
     });
+  }
+
+  private fun initConfiguration() {
+    TmdbApplication.get(this)
+        .applicationComponent
+        .plus(MainActivityModule())
+        .inject(this)
   }
 }
