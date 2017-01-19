@@ -1,7 +1,6 @@
 package com.arctouch.gabrielzandavalle.tmdb.adapter
 
 import android.content.Context
-import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +35,7 @@ class MovieAdapter(context: Context, movies: List<Movie>): RecyclerView.Adapter<
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val item = movies[position]
-    holder.movieName.text = item.title;
+    holder.movieName.text = item.title
     holder.overview.text = item.overview
     Picasso.with(context).load("https://image.tmdb.org/t/p/w500" + item.posterPath).into(holder
         .posterPath)

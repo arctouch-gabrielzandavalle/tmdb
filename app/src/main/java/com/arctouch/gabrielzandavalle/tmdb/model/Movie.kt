@@ -8,5 +8,4 @@ package com.arctouch.gabrielzandavalle.tmdb.model
     val posterPath: String = "",
     val title: String = "",
     val overview: String = ""
-
 )
