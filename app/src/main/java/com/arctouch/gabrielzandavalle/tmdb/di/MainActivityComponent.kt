@@ -1,5 +1,6 @@
 package com.arctouch.gabrielzandavalle.tmdb.di
 
+import com.arctouch.gabrielzandavalle.tmdb.HomeFragment
 import com.arctouch.gabrielzandavalle.tmdb.MainActivity
 import dagger.Subcomponent
 import java.lang.annotation.Retention
@@ -15,6 +16,7 @@ import javax.inject.Scope
 interface MainActivityComponent{
 
   fun inject(activity: MainActivity)
+  fun inject(activity: HomeFragment)
 }
 
 @Scope
