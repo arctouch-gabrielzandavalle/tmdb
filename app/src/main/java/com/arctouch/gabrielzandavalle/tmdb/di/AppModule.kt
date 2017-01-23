@@ -7,6 +7,9 @@ import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import rx.schedulers.Schedulers
+
 
 /**
  * Created by gabrielzandavalle on 1/18/17.
@@ -27,9 +30,13 @@ class AppModule(private val tmdbApplication: TmdbApplication) {
 
   @Provides @Singleton
   fun provideTmdbApi(retrofitBaseUrl: String) : TmdbApiInterface {
+
+    val rxAdapter = RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io())
+
     val retrofit = Retrofit.Builder()
         .baseUrl(retrofitBaseUrl)
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(rxAdapter)
         .build();
 
     return retrofit.create(TmdbApiInterface::class.java)

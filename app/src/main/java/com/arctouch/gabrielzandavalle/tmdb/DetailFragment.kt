@@ -14,9 +14,10 @@ import kotlinx.android.synthetic.main.fragment_detail.view.detail_overview
 import kotlinx.android.synthetic.main.fragment_detail.view.releaseDate
 import kotlinx.android.synthetic.main.movie_item.view.movieName
 import kotlinx.android.synthetic.main.movie_item.view.posterPath
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import rx.Observable
+import rx.Subscriber
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -39,24 +40,29 @@ class DetailFragment : Fragment() {
 
     if (movieId != null) {
 
-      val movie: Call<Movie> = tmdbApi.getMovie(movieId, "1f54bd990f1cdfb230adb312546d765d")
-      movie.enqueue(object: Callback<Movie> {
+      val movie: Observable<Movie> = tmdbApi.getMovie(movieId, "1f54bd990f1cdfb230adb312546d765d")
+      movie.subscribeOn(Schedulers.io())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(object: Subscriber<Movie>(){
+            override fun onCompleted() {
+              //Completed
+            }
+            override fun onError(e: Throwable) {
+              Log.d(TAG, e.message)
+            }
+            override fun onNext(movie: Movie?) {
 
-        override fun onResponse(call: Call<Movie>?, response: Response<Movie>?) {
-          val movie = response?.body()
-          if (movie != null) {
-            view.movieName.text = movie.title
-            view.detail_overview.text = movie.overview
-            view.releaseDate.text = movie.releaseDate
-            Picasso.with(activity).load("https://image.tmdb.org/t/p/w500" + movie.posterPath)
-                .into(view.posterPath)
-          }
-        }
+              if (movie != null) {
+                Log.e("Output",movie?.toString());
 
-        override fun onFailure(call: Call<Movie>?, t: Throwable?) {
-          Log.d(TAG, t?.message)
-        }
-      })
+                view.movieName.text = movie.title
+                view.detail_overview.text = movie.overview
+                view.releaseDate.text = movie.releaseDate
+                Picasso.with(activity).load("https://image.tmdb.org/t/p/w500" + movie.posterPath)
+                    .into(view.posterPath)
+              }
+            }
+          })
     }
     return view
   }

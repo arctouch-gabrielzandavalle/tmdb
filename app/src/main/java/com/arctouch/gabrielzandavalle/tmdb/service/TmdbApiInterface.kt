@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import rx.Observable
 
 /**
  * Created by gabrielzandavalle on 1/18/17.
@@ -15,8 +16,8 @@ interface TmdbApiInterface {
 
   @GET("list/{id}")
   fun getList(@Path("id") id: String, @Query("api_key") apiKey: String ) :
-      Call<MovieListResponse>
+      Observable<MovieListResponse>
 
   @GET("movie/{id}")
-  fun  getMovie(@Path("id") id: String, @Query("api_key") apiKey: String ): Call<Movie>
+  fun  getMovie(@Path("id") id: String, @Query("api_key") apiKey: String ): Observable<Movie>
 }

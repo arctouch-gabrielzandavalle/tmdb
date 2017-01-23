@@ -7,16 +7,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.arctouch.gabrielzandavalle.tmdb.adapter.MovieAdapter
 import com.arctouch.gabrielzandavalle.tmdb.di.MainActivityModule
 import com.arctouch.gabrielzandavalle.tmdb.model.MovieListResponse
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import kotlinx.android.synthetic.main.fragment_home.moviesRecyclerView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import rx.Observable
+import rx.Subscriber
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -36,20 +35,26 @@ class HomeFragment : Fragment() {
 
     initConfiguration()
 
-    val list: Call<MovieListResponse> = tmdbApi.getList("1", "1f54bd990f1cdfb230adb312546d765d")
+    val list: Observable<MovieListResponse> = tmdbApi.getList("1", "1f54bd990f1cdfb230adb312546d765d")
 
-    list.enqueue(object: Callback<MovieListResponse> {
+    list.subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe (object:Subscriber<MovieListResponse>(){
+          override fun onCompleted() {
+            //Completed
+          }
 
-      override fun onResponse(call: Call<MovieListResponse>?, response: Response<MovieListResponse>?) {
-        val movies = response?.body()?.items!!
-        moviesRecyclerView.adapter = MovieAdapter(movies)
-        moviesRecyclerView.layoutManager = LinearLayoutManager(this@HomeFragment.activity)
-      }
+          override fun onError(e: Throwable) {
+           Log.d(TAG, e.message)
+          }
 
-      override fun onFailure(call: Call<MovieListResponse>?, t: Throwable?) {
-        Log.d(TAG, t?.message)
-      }
-    })
+          override fun onNext(response: MovieListResponse?) {
+            Log.e("Output",response.toString());
+
+            moviesRecyclerView.adapter = MovieAdapter(response?.items!!)
+            moviesRecyclerView.layoutManager = LinearLayoutManager(this@HomeFragment.activity)
+          }
+        })
 
     return view
   }
