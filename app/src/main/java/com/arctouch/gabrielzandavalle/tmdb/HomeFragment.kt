@@ -7,11 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.arctouch.gabrielzandavalle.tmdb.adapter.MovieAdapter
 import com.arctouch.gabrielzandavalle.tmdb.di.MainActivityModule
 import com.arctouch.gabrielzandavalle.tmdb.model.MovieListResponse
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
-import kotlinx.android.synthetic.main.fragment_home.moviesList
+import kotlinx.android.synthetic.main.fragment_home.moviesRecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,8 +43,9 @@ class HomeFragment : Fragment() {
     list.enqueue(object: Callback<MovieListResponse> {
 
       override fun onResponse(call: Call<MovieListResponse>?, response: Response<MovieListResponse>?) {
-        moviesList.adapter = MovieAdapter(this@HomeFragment.activity, response?.body()?.items!!)
-        moviesList.layoutManager = LinearLayoutManager(this@HomeFragment.activity)
+        val movies = response?.body()?.items!!
+        moviesRecyclerView.adapter = MovieAdapter(movies)
+        moviesRecyclerView.layoutManager = LinearLayoutManager(this@HomeFragment.activity)
       }
 
       override fun onFailure(call: Call<MovieListResponse>?, t: Throwable?) {

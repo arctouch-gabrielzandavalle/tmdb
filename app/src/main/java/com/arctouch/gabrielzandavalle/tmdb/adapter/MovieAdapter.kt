@@ -1,15 +1,20 @@
 package com.arctouch.gabrielzandavalle.tmdb.adapter
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import com.arctouch.gabrielzandavalle.tmdb.DetailActivity
 import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_home.moviesRecyclerView
 import kotlinx.android.synthetic.main.movie_item.view.movieName
 import kotlinx.android.synthetic.main.movie_item.view.overview
 import kotlinx.android.synthetic.main.movie_item.view.posterPath
@@ -18,13 +23,14 @@ import kotlinx.android.synthetic.main.movie_item.view.posterPath
  * Created by gabrielzandavalle on 1/17/17.
  */
 
-class MovieAdapter(private val context: Context, private var movies: List<Movie>): RecyclerView
-.Adapter<MovieAdapter
-.ViewHolder>() {
+class MovieAdapter(var movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-    val layoutInflater = LayoutInflater.from(parent.context)
-    return ViewHolder(layoutInflater.inflate(R.layout.movie_item, parent, false))
+    val context = parent.context
+    val layoutInflater = LayoutInflater.from(context)
+    val view = layoutInflater.inflate(R.layout.movie_item, parent, false)
+
+    return ViewHolder(context, view)
   }
 
   override fun getItemCount(): Int {
@@ -32,16 +38,24 @@ class MovieAdapter(private val context: Context, private var movies: List<Movie>
   }
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    val item = movies[position]
-    holder.movieName.text = item.title
-    holder.overview.text = item.overview
-    Picasso.with(context).load("https://image.tmdb.org/t/p/w500" + item.posterPath).into(holder
-        .posterPath)
+    holder.bind(movies[position])
   }
 
-  class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+  class ViewHolder(val context: Context, val view : View) : RecyclerView.ViewHolder(view) {
     val posterPath: ImageView = view.posterPath
     val movieName: TextView = view.movieName
     val overview: TextView = view.overview
+
+    fun bind(item: Movie) {
+      movieName.text = item.title
+      overview.text = item.overview
+      Picasso.with(context).load("https://image.tmdb.org/t/p/w500" + item.posterPath).into(posterPath)
+
+      view.setOnClickListener {
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra("selectedMovie", item.id)
+        context.startActivity(intent)
+      }
+    }
   }
 }

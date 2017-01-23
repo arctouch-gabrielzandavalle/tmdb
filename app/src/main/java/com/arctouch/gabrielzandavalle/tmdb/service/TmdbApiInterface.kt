@@ -16,4 +16,7 @@ interface TmdbApiInterface {
   @GET("list/{id}")
   fun getList(@Path("id") id: String, @Query("api_key") apiKey: String ) :
       Call<MovieListResponse>
+
+  @GET("movie/{id}")
+  fun  getMovie(@Path("id") id: String, @Query("api_key") apiKey: String ): Call<Movie>
 }

@@ -12,9 +12,7 @@ import javax.inject.Singleton
  */
 
 @Module
-class AppModule(tmdbApplication: TmdbApplication) {
-
-  val tmdbApplication: TmdbApplication = tmdbApplication
+class AppModule(private val tmdbApplication: TmdbApplication) {
 
   @Provides @Singleton
   fun provideApplication() : TmdbApplication{

@@ -1,6 +1,5 @@
 package com.arctouch.gabrielzandavalle.tmdb.di
 
-import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
 import dagger.Component
 import javax.inject.Singleton
 

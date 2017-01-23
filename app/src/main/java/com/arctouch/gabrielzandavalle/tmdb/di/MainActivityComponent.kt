@@ -1,5 +1,6 @@
 package com.arctouch.gabrielzandavalle.tmdb.di
 
+import com.arctouch.gabrielzandavalle.tmdb.DetailFragment
 import com.arctouch.gabrielzandavalle.tmdb.HomeFragment
 import com.arctouch.gabrielzandavalle.tmdb.MainActivity
 import dagger.Subcomponent
@@ -14,4 +15,5 @@ interface MainActivityComponent{
 
   fun inject(activity: MainActivity)
   fun inject(activity: HomeFragment)
+  fun  inject(detailFragment: DetailFragment)
 }
