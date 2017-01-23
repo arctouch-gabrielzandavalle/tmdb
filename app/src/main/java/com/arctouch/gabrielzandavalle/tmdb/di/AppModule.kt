@@ -1,6 +1,7 @@
 package com.arctouch.gabrielzandavalle.tmdb.di
 
 import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
+import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -25,10 +26,12 @@ class AppModule(private val tmdbApplication: TmdbApplication) {
   }
 
   @Provides @Singleton
-  fun provideRetrofit(retrofitBaseUrl: String) : Retrofit {
-    return Retrofit.Builder()
+  fun provideTmdbApi(retrofitBaseUrl: String) : TmdbApiInterface {
+    val retrofit = Retrofit.Builder()
         .baseUrl(retrofitBaseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build();
+
+    return retrofit.create(TmdbApiInterface::class.java)
   }
 }

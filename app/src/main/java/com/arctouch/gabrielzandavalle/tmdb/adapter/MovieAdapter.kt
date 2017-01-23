@@ -1,7 +1,6 @@
 package com.arctouch.gabrielzandavalle.tmdb.adapter
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.arctouch.gabrielzandavalle.tmdb.DetailActivity
 import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_home.moviesRecyclerView
 import kotlinx.android.synthetic.main.movie_item.view.movieName
 import kotlinx.android.synthetic.main.movie_item.view.overview
 import kotlinx.android.synthetic.main.movie_item.view.posterPath

@@ -2,7 +2,6 @@ package com.arctouch.gabrielzandavalle.tmdb.model
 
 import android.os.Parcel
 import android.os.Parcelable
-import java.io.Serializable
 
 /**
  * Created by gabrielzandavalle on 1/17/17.
@@ -13,7 +12,9 @@ import java.io.Serializable
     @com.google.gson.annotations.SerializedName("poster_path")
     val posterPath: String = "",
     val title: String = "",
-    val overview: String = ""
+    val overview: String = "",
+    @com.google.gson.annotations.SerializedName("release_date")
+    val releaseDate : String = ""
   ): Parcelable {
 
   companion object {
@@ -32,5 +33,6 @@ import java.io.Serializable
     dest?.writeString(posterPath)
     dest?.writeString(title)
     dest?.writeString(overview)
+    dest?.writeString(releaseDate)
   }
 }

@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
   val TAG = MainActivity::class.java.name
 
   @Inject
-  lateinit var retrofit: Retrofit
+  lateinit var tmdbApi: TmdbApiInterface
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     super.onCreateView(inflater, container, savedInstanceState)
@@ -35,8 +35,6 @@ class HomeFragment : Fragment() {
     val view = inflater.inflate(R.layout.fragment_home, container, false)
 
     initConfiguration()
-
-    val tmdbApi = retrofit.create(TmdbApiInterface::class.java)
 
     val list: Call<MovieListResponse> = tmdbApi.getList("1", "1f54bd990f1cdfb230adb312546d765d")
 
