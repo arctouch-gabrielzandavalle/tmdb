@@ -3,6 +3,7 @@ package com.arctouch.gabrielzandavalle.tmdb.di
 import com.arctouch.gabrielzandavalle.tmdb.DetailFragment
 import com.arctouch.gabrielzandavalle.tmdb.HomeFragment
 import com.arctouch.gabrielzandavalle.tmdb.MainActivity
+import com.arctouch.gabrielzandavalle.tmdb.service.MovieListPresenter
 import dagger.Subcomponent
 
 /**
@@ -18,4 +19,5 @@ interface MainActivityComponent{
   //criar classes separadas.
   fun inject(activity: HomeFragment)
   fun inject(detailFragment: DetailFragment)
+  fun  inject(movieListPresenter: MovieListPresenter)
 }
