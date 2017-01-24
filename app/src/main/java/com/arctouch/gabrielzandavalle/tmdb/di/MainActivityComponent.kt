@@ -14,6 +14,8 @@ import dagger.Subcomponent
 interface MainActivityComponent{
 
   fun inject(activity: MainActivity)
+
+  //criar classes separadas.
   fun inject(activity: HomeFragment)
-  fun  inject(detailFragment: DetailFragment)
+  fun inject(detailFragment: DetailFragment)
 }
