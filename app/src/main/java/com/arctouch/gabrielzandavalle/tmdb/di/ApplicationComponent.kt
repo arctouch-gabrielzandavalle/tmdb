@@ -10,4 +10,5 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(AppModule::class))
 interface ApplicationComponent {
   fun plus(module: MainActivityModule): MainActivityComponent
+  fun plus(module: HomeViewModule): HomeViewComponent
 }
