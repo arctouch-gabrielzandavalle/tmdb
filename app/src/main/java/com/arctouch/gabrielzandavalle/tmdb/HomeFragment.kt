@@ -10,6 +10,7 @@ import com.arctouch.gabrielzandavalle.tmdb.adapter.MovieAdapter
 import com.arctouch.gabrielzandavalle.tmdb.di.HomeViewModule
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import com.arctouch.gabrielzandavalle.tmdb.service.MovieListPresenter
+import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import kotlinx.android.synthetic.main.fragment_home.moviesRecyclerView
 import javax.inject.Inject
 
@@ -17,6 +18,9 @@ import javax.inject.Inject
  * Created by gabrielzandavalle on 1/19/17.
  */
 class HomeFragment : Fragment(), MovieListView {
+
+  @Inject
+  lateinit var tmdbApi: TmdbApiInterface
 
   @Inject
   lateinit var movieListPresenter:  MovieListPresenter
@@ -36,7 +40,7 @@ class HomeFragment : Fragment(), MovieListView {
   private fun initConfiguration() {
     TmdbApplication.get(this.activity)
         .applicationComponent
-        .plus(HomeViewModule(this.activity, this))
+        .plus(HomeViewModule(this))
         .inject(this)
   }
 
