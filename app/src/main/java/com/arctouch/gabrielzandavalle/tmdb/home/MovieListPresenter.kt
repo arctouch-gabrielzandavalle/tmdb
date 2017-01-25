@@ -1,7 +1,6 @@
 package com.arctouch.gabrielzandavalle.tmdb.home
 
 import android.util.Log
-import com.arctouch.gabrielzandavalle.tmdb.home.MovieListView
 import com.arctouch.gabrielzandavalle.tmdb.model.MovieListResponse
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import rx.Observable

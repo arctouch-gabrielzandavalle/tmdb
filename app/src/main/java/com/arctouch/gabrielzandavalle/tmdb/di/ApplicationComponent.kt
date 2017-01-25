@@ -1,5 +1,7 @@
 package com.arctouch.gabrielzandavalle.tmdb.di
 
+import com.arctouch.gabrielzandavalle.tmdb.detail.DetailViewComponent
+import com.arctouch.gabrielzandavalle.tmdb.detail.DetailViewModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,6 +11,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(AppModule::class))
 interface ApplicationComponent {
-  fun plus(module: MainActivityModule): MainActivityComponent
   fun plus(module: HomeViewModule): HomeViewComponent
+  fun plus(module: DetailViewModule): DetailViewComponent
 }

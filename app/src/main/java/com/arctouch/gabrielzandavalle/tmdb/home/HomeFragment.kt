@@ -6,14 +6,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.arctouch.gabrielzandavalle.tmdb.home.MovieListView
 import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
 import com.arctouch.gabrielzandavalle.tmdb.adapter.MovieAdapter
 import com.arctouch.gabrielzandavalle.tmdb.di.HomeViewModule
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
-import com.arctouch.gabrielzandavalle.tmdb.home.MovieListPresenter
-import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import kotlinx.android.synthetic.main.fragment_home.moviesRecyclerView
 import javax.inject.Inject
 
@@ -23,17 +20,14 @@ import javax.inject.Inject
 class HomeFragment : Fragment(), MovieListView {
 
   @Inject
-  lateinit var tmdbApi: TmdbApiInterface
-
-  @Inject
   lateinit var movieListPresenter: MovieListPresenter
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     super.onCreateView(inflater, container, savedInstanceState)
 
-    initConfiguration()
-
     val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+    initConfiguration()
 
     movieListPresenter.showMovieList()
 
