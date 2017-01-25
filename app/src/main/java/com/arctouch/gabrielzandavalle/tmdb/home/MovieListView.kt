@@ -1,4 +1,4 @@
-package com.arctouch.gabrielzandavalle.tmdb
+package com.arctouch.gabrielzandavalle.tmdb.home
 
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 

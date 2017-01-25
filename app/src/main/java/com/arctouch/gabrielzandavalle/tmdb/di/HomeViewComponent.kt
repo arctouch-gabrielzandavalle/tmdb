@@ -1,7 +1,7 @@
 package com.arctouch.gabrielzandavalle.tmdb.di
 
-import com.arctouch.gabrielzandavalle.tmdb.HomeFragment
-import com.arctouch.gabrielzandavalle.tmdb.MovieListView
+import com.arctouch.gabrielzandavalle.tmdb.home.HomeFragment
+import com.arctouch.gabrielzandavalle.tmdb.home.MovieListView
 import dagger.Subcomponent
 
 /**

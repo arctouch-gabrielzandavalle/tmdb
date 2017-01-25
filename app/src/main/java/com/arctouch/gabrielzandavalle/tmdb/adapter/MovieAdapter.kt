@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.arctouch.gabrielzandavalle.tmdb.DetailActivity
+import com.arctouch.gabrielzandavalle.tmdb.detail.DetailActivity
 import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import com.squareup.picasso.Picasso

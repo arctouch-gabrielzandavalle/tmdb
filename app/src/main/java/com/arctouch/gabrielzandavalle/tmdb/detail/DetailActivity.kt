@@ -1,7 +1,8 @@
-package com.arctouch.gabrielzandavalle.tmdb
+package com.arctouch.gabrielzandavalle.tmdb.detail
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.arctouch.gabrielzandavalle.tmdb.R
 
 class DetailActivity: AppCompatActivity() {
 

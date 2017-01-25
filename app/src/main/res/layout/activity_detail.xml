@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fragment android:id="@+id/home_fragment"
-          android:name="com.arctouch.gabrielzandavalle.tmdb.DetailFragment"
+          android:name="com.arctouch.gabrielzandavalle.tmdb.detail.DetailFragment"
           xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          tools:context=".DetailActivity"
+          tools:context=".detail.DetailActivity"
           tools:ignore="MergeRootFrame" />

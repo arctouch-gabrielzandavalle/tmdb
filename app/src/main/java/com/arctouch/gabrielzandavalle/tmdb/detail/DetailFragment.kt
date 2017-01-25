@@ -1,4 +1,4 @@
-package com.arctouch.gabrielzandavalle.tmdb
+package com.arctouch.gabrielzandavalle.tmdb.detail
 
 import android.app.Fragment
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.arctouch.gabrielzandavalle.tmdb.R
+import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
 import com.arctouch.gabrielzandavalle.tmdb.di.MainActivityModule
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface

@@ -1,7 +1,7 @@
 package com.arctouch.gabrielzandavalle.tmdb.di
 
-import com.arctouch.gabrielzandavalle.tmdb.MovieListView
-import com.arctouch.gabrielzandavalle.tmdb.service.MovieListPresenter
+import com.arctouch.gabrielzandavalle.tmdb.home.MovieListView
+import com.arctouch.gabrielzandavalle.tmdb.home.MovieListPresenter
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import dagger.Module
 import dagger.Provides
@@ -13,7 +13,7 @@ import dagger.Provides
 class HomeViewModule(val movieListView: MovieListView) {
 
   @Provides
-  fun provideMovieListPresenter(tmdbApi: TmdbApiInterface) : MovieListPresenter{
+  fun provideMovieListPresenter(tmdbApi: TmdbApiInterface) : MovieListPresenter {
     return MovieListPresenter(movieListView, tmdbApi)
   }
 }

@@ -20,4 +20,8 @@ interface TmdbApiInterface {
 
   @GET("movie/{id}")
   fun  getMovie(@Path("id") id: String, @Query("api_key") apiKey: String ): Observable<Movie>
+
+  fun getInts() : Observable<Int>{
+    return Observable.just(1, 2, 3 )
+  }
 }
