@@ -2,6 +2,8 @@ package com.arctouch.gabrielzandavalle.tmdb.di
 
 import com.arctouch.gabrielzandavalle.tmdb.detail.DetailViewComponent
 import com.arctouch.gabrielzandavalle.tmdb.detail.DetailViewModule
+import com.arctouch.gabrielzandavalle.tmdb.home.HomeViewComponent
+import com.arctouch.gabrielzandavalle.tmdb.home.HomeViewModule
 import dagger.Component
 import javax.inject.Singleton
 

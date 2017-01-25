@@ -1,4 +1,4 @@
-package com.arctouch.gabrielzandavalle.tmdb.di
+package com.arctouch.gabrielzandavalle.tmdb.home
 
 import com.arctouch.gabrielzandavalle.tmdb.home.MovieListView
 import com.arctouch.gabrielzandavalle.tmdb.home.MovieListPresenter

@@ -1,6 +1,8 @@
-package com.arctouch.gabrielzandavalle.tmdb.di
+package com.arctouch.gabrielzandavalle.tmdb.home
 
+import com.arctouch.gabrielzandavalle.tmdb.di.ActivityScope
 import com.arctouch.gabrielzandavalle.tmdb.home.HomeFragment
+import com.arctouch.gabrielzandavalle.tmdb.home.HomeViewModule
 import dagger.Subcomponent
 
 /**

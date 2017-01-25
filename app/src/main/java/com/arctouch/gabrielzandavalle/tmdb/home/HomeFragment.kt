@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
 import com.arctouch.gabrielzandavalle.tmdb.adapter.MovieAdapter
-import com.arctouch.gabrielzandavalle.tmdb.di.HomeViewModule
+import com.arctouch.gabrielzandavalle.tmdb.home.HomeViewModule
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import kotlinx.android.synthetic.main.fragment_home.moviesRecyclerView
 import javax.inject.Inject

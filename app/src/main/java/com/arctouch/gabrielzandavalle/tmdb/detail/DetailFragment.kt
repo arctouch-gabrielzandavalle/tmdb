@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
-import com.arctouch.gabrielzandavalle.tmdb.di.HomeViewModule
-import com.arctouch.gabrielzandavalle.tmdb.di.MainActivityModule
+import com.arctouch.gabrielzandavalle.tmdb.home.HomeViewModule
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import com.squareup.picasso.Picasso
