@@ -2,24 +2,17 @@ package com.arctouch.gabrielzandavalle.tmdb.detail
 
 import android.app.Fragment
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
-import com.arctouch.gabrielzandavalle.tmdb.home.HomeViewModule
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
-import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail.view.detail_overview
+import kotlinx.android.synthetic.main.fragment_detail.view.posterPath
 import kotlinx.android.synthetic.main.fragment_detail.view.releaseDate
 import kotlinx.android.synthetic.main.movie_item.view.movieName
-import kotlinx.android.synthetic.main.movie_item.view.posterPath
-import rx.Observable
-import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
