@@ -1,7 +1,5 @@
 package com.arctouch.gabrielzandavalle.tmdb.home
 
-import com.arctouch.gabrielzandavalle.tmdb.home.MovieListView
-import com.arctouch.gabrielzandavalle.tmdb.home.MovieListPresenter
 import com.arctouch.gabrielzandavalle.tmdb.service.TmdbApiInterface
 import dagger.Module
 import dagger.Provides
