@@ -9,10 +9,10 @@ import com.arctouch.gabrielzandavalle.tmdb.R
 import com.arctouch.gabrielzandavalle.tmdb.TmdbApplication
 import com.arctouch.gabrielzandavalle.tmdb.model.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_detail.view.detail_overview
+import kotlinx.android.synthetic.main.fragment_detail.view.detailOverview
+import kotlinx.android.synthetic.main.fragment_detail.view.movieName
 import kotlinx.android.synthetic.main.fragment_detail.view.posterPath
 import kotlinx.android.synthetic.main.fragment_detail.view.releaseDate
-import kotlinx.android.synthetic.main.movie_item.view.movieName
 import javax.inject.Inject
 
 /**
@@ -38,7 +38,7 @@ class DetailFragment : Fragment(), DetailView {
 
   override fun showMovieDetail(movie: Movie) {
     view.movieName.text = movie.title
-    view.detail_overview.text = movie.overview
+    view.detailOverview.text = movie.overview
     view.releaseDate.text = movie.releaseDate
     Picasso.with(activity).load("https://image.tmdb.org/t/p/w500" + movie.posterPath)
         .into(view.posterPath)
