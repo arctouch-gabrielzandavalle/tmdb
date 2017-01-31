@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.movie_item.view.posterPath
  * Created by gabrielzandavalle on 1/17/17.
  */
 
-class MovieAdapter(var movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+open class MovieAdapter(var movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val context = parent.context
