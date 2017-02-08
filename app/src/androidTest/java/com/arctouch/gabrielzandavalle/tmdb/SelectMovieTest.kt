@@ -1,6 +1,5 @@
 package com.arctouch.gabrielzandavalle.tmdb
 
-import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.espresso.action.ViewActions.click
@@ -12,6 +11,7 @@ import com.arctouch.gabrielzandavalle.tmdb.adapter.MovieAdapter
 import org.junit.runner.RunWith
 import org.junit.Rule
 import org.junit.Test
+import android.support.test.espresso.Espresso
 
 /**
  * Created by gabrielzandavalle on 1/31/17.
@@ -26,11 +26,10 @@ class SelectMovieTest {
 
   @Test
   fun testSelectMovie() {
-    InstrumentationRegistry.getInstrumentation().waitForIdleSync()
     val onView = onView(withId(R.id.moviesRecyclerView))
-    Thread.sleep(1000)
+    val idlingResource = ElapsedTimeIdlingResource(1000)
+    Espresso.registerIdlingResources(idlingResource)
     onView.perform(RecyclerViewActions
         .actionOnItemAtPosition<MovieAdapter.ViewHolder>(0, click()))
-
   }
 }
